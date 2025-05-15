@@ -1,0 +1,22 @@
+# My first deployment.yaml file.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: text-analyzer-deployment
+  labels:
+    app: text-analyzer-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: text-analyzer-deployment
+  template:
+    metadata:
+      labels:
+        app: text-analyzer-deployment
+    spec:
+      containers:
+      - name: text-analyzer-deployment
+        image: khannashiv/text-analyzer:46
+        ports:
+        - containerPort: 80
