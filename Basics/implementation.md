@@ -67,5 +67,7 @@
 
 
 **Cheat sheet for kubectl commands.**
-    -Ref : https://kubernetes.io/docs/reference/kubectl/quick-reference/ 
-    
+  - Ref : 
+    - https://kubernetes.io/docs/reference/kubectl/quick-reference/
+    - https://spacelift.io/blog/kubernetes-cheat-sheet
+
