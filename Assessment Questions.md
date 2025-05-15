@@ -1,0 +1,179 @@
+#### Some interview questions on Kubernetes.
+
+Q: What is the difference between Docker and Kubernetes?
+Sol : 
+**Docker**
+ - A containerization platform that packages applications and their dependencies into containers.
+ - Use case: Build, ship, and run applications consistently across environments.
+ - Focus: Application packaging and isolated environments.
+
+**Kubernetes**
+ - A container orchestration platform that manages many containers across clusters of machines.
+ - Use case: Automatically deploy, scale, manage, and heal containerized applications.
+ - Focus: Coordination and management of containerized apps in production.
+ 
+ Q: What are the main components of Kubernetes architecture?
+ Sol :
+
+ Kubernetes has a master-worker architecture, with components divided into two main categories:
+
+1. Control Plane Components (Master Node)
+
+| Component                                 | Purpose
+----------------------------------------------------------------------------------------------------------------------------
+**API Server**           | The **entry point** to Kubernetes. Exposes the Kubernetes API and handles communication.                            
+**Scheduler**            | Assigns Pods to Nodes based on resource availability and policies.                                    
+**Controller Manager**   | Runs background **controllers** (e.g., for nodes, replication, endpoints) to ensure cluster state matches the desired state.
+**etcd**                 | A **distributed key-value store** that stores all cluster data (configuration, state).                  
+**Cloud Controller Manager** *(optional)*   | Integrates Kubernetes with cloud providers (like managing load balancers or storage).   
+--------------------------------------------------------------------------------------------------------------------------------- 
+
+2. Node Components (Worker Nodes)
+
+| Component             | Purpose                                                                                          |
+| --------------------- | ------------------------------------------------------------------------------------------------ |
+| **Kubelet**           | Agent on each node that **communicates with the API server** and manages containers on the node. |
+| **Kube-proxy**        | Handles **network routing** and forwarding within the cluster.                                   |
+| **Container Runtime** | Software that **runs containers** (e.g., Docker, containerd, CRI-O).                             |
+
+ **Quick Summary Diagram**
+
+    Control Plane:
+    ├── API Server
+    ├── Scheduler
+    ├── Controller Manager
+    └── etcd
+
+    Worker Node:
+    ├── Kubelet
+    ├── Kube-proxy
+    └── Container Runtime
+
+Q: What are the main differences between Docker Swarm and Kubernetes?
+
+Sol : Docker Swarm and Kubernetes are both container orchestration tools, but they differ in features, complexity, and ecosystem support.
+
+
+| Feature                      | **Docker Swarm**                       | **Kubernetes**                                |
+| ---------------------------- | -------------------------------------- | --------------------------------------------- |
+| **Ease of setup**            | ✅ Simple and fast                      | ❌ More complex, steeper learning curve        |
+| **Complexity**               | Lightweight, minimal features          | Full-featured, enterprise-grade               |
+| **Scalability**              | Suitable for small to medium workloads | Designed for large-scale, production systems  |
+| **GUI Dashboard**            | ❌ No built-in dashboard                | ✅ Yes (Kubernetes Dashboard, Lens, etc.)      |
+| **High Availability**        | Limited support                        | Strong support with self-healing              |
+| **Load Balancing**           | Basic (round-robin)                    | Advanced (service discovery, DNS-based)       |
+| **Rolling Updates**          | ✅ Supported                            | ✅ More powerful and customizable              |
+| **Community & Ecosystem**    | Smaller, declining                     | Large, growing, and widely adopted            |
+| **Secrets & Configs**        | Basic support                          | Advanced, native support                      |
+| **Networking**               | Simple overlay                         | Advanced (ClusterIP, NodePort, Ingress, etc.) |
+| **Third-party integrations** | Limited                                | Vast ecosystem (monitoring, logging, CI/CD)   |
+
+- Use Docker Swarm if you want something easy to use with minimal setup for small projects or quick demos.
+- Use Kubernetes when you need advanced features, scalability, and strong community support—ideal for production environments.
+
+
+Q :  What is diffrence between Docker container and Kubernetes pod ?
+Sol : 
+- A Pod is the smallest deployable unit in Kubernetes.Pods are managed by Kubernetes (not Docker directly).Pods provide orchestration-level abstraction for managing containers.
+    - A pod can contain one or more containers that share:
+        - The same network IP or we can say common networking .
+        - Storage volumes 
+        - Configuration (e.g., environment variables)
+
+Q : What is a namespace in Kubernetes ?
+Sol : 
+- In Kubernetes namespace is logical isolation of resources, network policies, rbac. For example there are 2 projects using same k8's cluster. One project can use ns1 and other project can use ns2 without any overlap amd authentication problems.
+
+Q: What is the role of kube-proxy in Kubernetes?
+
+Sol : 
+- kube-proxy is a networking component that runs on every node in a Kubernetes cluster. Its main role is to manage network communication to and from Pods.
+
+ **Key Responsibilities of kube-proxy:**
+
+1. Service Networking
+   - Routes traffic from Services to the correct Pods.
+   - Ensures that when you access a Service (e.g., ClusterIP or NodePort), your request is forwarded to one of the backend Pods.
+
+2. Load Balancing
+   - Performs round-robin load balancing across multiple Pod IPs behind a Service.
+
+3. Maintaining Network Rules
+   - Manages iptables, ipvs, or userspace rules to route traffic efficiently.
+   - These rules allow Kubernetes Services to behave like a virtual IP that maps to real Pod IPs.
+
+4. Abstracting Pod IPs
+   - Helps decouple clients from Pod IPs, which can change over time due to scaling or rescheduling.
+
+Q: What is the role of Kubelet ?
+
+Sol : 
+- Kubelet manages the container that are schduled to run on the worker node. It ensures that containers are running and healthy . Kubelet communicate with k8's api server to get the information about the containers that should be runnig on the node and then start / stop the container as needed to maintain the desired state. It also monitors the containers to ensure that they are running correctly and restarts them when neccessary.
+
+Q: What are the different types of Services in Kubernetes?
+
+Sol : Ref : https://kubernetes.io/docs/concepts/services-networking/service/ 
+
+Q : What is difference between NodePort and LoadBalancer type service ?
+
+Sol : 
+- Both NodePort and LoadBalancer are Service types in Kubernetes used to expose applications externally, but they work differently and are suited for different scenarios.
+
+1. NodePort
+    - Exposes the service on a static port (30000–32767) on every node’s IP.
+    - External users access the app using if they have access to kubernetes nodes ( may be worker / master nodes)
+        - http://<NodeIP>:<NodePort>
+    - Basic and limited — good for development or testing.
+
+2. LoadBalancer
+    - Exposes the service using a public / external IP provided or assigned to load balancer
+    - Handles advance load balancing, health checks, and traffic routing.
+
+
+| **Feature**         | **NodePort**                    | **LoadBalancer**                      |
+| ------------------- | ------------------------------- | ------------------------------------- |
+| Exposed on          | Node’s IP + Node port           | External load balancer with public IP |
+| Port Range          | 30000–32767                     | Any port (managed by LB)              |
+| Load Balancing      | Basic (manual across nodes)     | Automatic (via cloud LB)              |
+| Use Case            | Dev, testing, internal clusters | Production, public services           |
+| External IP         | ❌ No (uses node IPs)           | ✅ Yes                               |
+
+
+Q: What are your day-to-day activities on Kubernetes?
+Sol :
+
+1. Deploying and Managing Applications :
+    - Writing and applying YAML manifests (Deployment, Service, Ingress, etc.)
+    - Using kubectl to create/update resources:
+        - kubectl apply/edit -f deployment.yaml
+    - Managing Helm charts for reusable, versioned deployments
+
+2. Monitoring and Health Checks:
+    - Checking Pod, Node, and Service status: i.e. kubectl get pods, nodes, services
+    - Watching logs and metrics for performance and errors: kubectl logs <pod-name>
+    - Using tools like Prometheus, Grafana, or Lens for deeper visibility
+
+3. Troubleshooting Issues :
+    - Investigating failing Pods or CrashLoopBackOff errors
+    - Describing resources for details : i.e. kubectl describe pod <pod-name>
+    - Checking events and node capacity
+    - Debugging networking or DNS issues inside the cluster
+
+4. Managing Configurations:
+    - Updating ConfigMaps and Secrets
+    - Managing environment variables and mounting volumes
+    - Rolling out application updates with kubectl rollout
+
+5. Scaling and Resource Management:
+    - Manually or automatically scaling deployments: i.e. kubectl scale deployment my-app --replicas=5
+    - Adjusting resource limits and requests in Pods
+    - Monitoring for over-provisioning or resource bottlenecks
+
+6. Security and Access Control :
+    - Managing RBAC roles and permissions
+    - Creating and rotating TLS certificates and secrets
+    - Enforcing network policies and container security standards
+
+7. Backups and Disaster Recovery : 
+    - Taking etcd backups (for admins)
+    - Validating cluster recovery strategies
