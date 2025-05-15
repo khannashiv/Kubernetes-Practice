@@ -64,3 +64,8 @@
     - ![](../images/Service-5.PNG "service-5")
     - ![](../images/Service-6.PNG "service-6")
     - ![](../images/Service-7.PNG "service-7")
+
+
+**Cheat sheet for kubectl commands.**
+    -Ref : https://kubernetes.io/docs/reference/kubectl/quick-reference/ 
+    
