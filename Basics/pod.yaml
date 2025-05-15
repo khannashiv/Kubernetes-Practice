@@ -1,0 +1,11 @@
+# My first pod.yaml file.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: text-analyzer-practice
+spec:
+  containers:
+  - name: text-analyzer-practice
+    image: khannashiv/text-analyzer:46
+    ports:
+    - containerPort: 80
