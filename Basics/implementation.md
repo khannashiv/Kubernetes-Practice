@@ -34,6 +34,6 @@
         - For this we have to login to minikube cluster using the command i.e. `minikube ssh`.
         - From there we have done curl to IP assigned to pod followed by port # where my python application is running. i.e.`curl <IP-of-pod>:<app port #>` for example  `curl 10.244.0.169:8000` or  `curl 10.244.0.166:8000`.
 
-        - ![](../images/Deploy-1.PNG "Deploy-1")
-        - ![](../images/Deploy-2.PNG "Deploy-2")
-        - ![](../images/Deploy-3.PNG "Deploy-3")
+    - ![](../images/Deploy-1.PNG "Deploy-1")
+    - ![](../images/Deploy-2.PNG "Deploy-2")
+    - ![](../images/Deploy-3.PNG "Deploy-3")
