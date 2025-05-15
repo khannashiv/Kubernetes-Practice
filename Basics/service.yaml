@@ -1,0 +1,15 @@
+# My first service.yaml file.
+# Target port is the one where your application is running. 
+# One can look for the target port by looking at the dockerfile if your application is containerized.
+apiVersion: v1
+kind: Service
+metadata:
+  name: text-analyzer-service
+spec:
+  type: NodePort
+  selector:
+    app: text-analyzer-deployment
+  ports:
+    - port: 80
+      targetPort: 8000  
+      nodePort: 30001

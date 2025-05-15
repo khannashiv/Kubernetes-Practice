@@ -39,4 +39,28 @@
     - ![](../images/Deploy-3.PNG "Deploy-3")
     - ![](../images/Deploy-4.PNG "Deploy-4")
 
-  
+  **Deploying service using YAML file.**
+
+- We have followed official documentaion to deploy pod in top of minikube cluster.
+    - Ref : https://kubernetes.io/docs/concepts/services-networking/service/
+
+        - Here we have created service.yaml file, the Service type field in service.yaml determines how the service is exposed.
+            - ClusterIP (default) : 
+                - Access: Internal only (within the cluster). Example: Database, internal APIs
+            - NodePort : 
+                - Access: Exposes the service / application on a static port on each Node's IP. Use case: Development/testing, basic external access without a cloud load balancer .
+                - Port Range: 30000–32767 (by default)
+            - LoadBalancer: 
+                - Exposes the service via an external load balancer (cloud providers)
+                - Use case: Production-grade public services in cloud environments (AWS, GCP, Azure)
+        - After updating the service.yaml via vim editor then we have proceed with `kubectl apply -f service.yaml` which actually has created service of type NodePort & name of the service in this case is text-analyzer-service
+        - Then we have done curl to static IP assigned to node ( i.e. Node created by minikube cluster ) followed by node port # where my python application is running. i.e.`curl <IP-of-node>:<node-port-#>` for example  `curl 192.168.49.2:30001`.
+    
+
+    - ![](../images/Service-1.PNG "service-1")
+    - ![](../images/Service-2.PNG "service-2")
+    - ![](../images/Service-3.PNG "service-3")
+    - ![](../images/Service-4.PNG "service-4")
+    - ![](../images/Service-5.PNG "service-5")
+    - ![](../images/Service-6.PNG "service-6")
+    - ![](../images/Service-7.PNG "service-7")
