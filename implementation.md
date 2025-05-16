@@ -34,10 +34,10 @@
         - For this we have to login to minikube cluster using the command i.e. `minikube ssh`.
         - From there we have done curl to IP assigned to pod followed by port # where my python application is running. i.e.`curl <IP-of-pod>:<app port #>` for example  `curl 10.244.0.169:8000` or  `curl 10.244.0.166:8000`.
 
-    - ![](../images/Deploy-1.PNG "Deploy-1")
-    - ![](../images/Deploy-2.PNG "Deploy-2")
-    - ![](../images/Deploy-3.PNG "Deploy-3")
-    - ![](../images/Deploy-4.PNG "Deploy-4")
+    - ![](images/Deploy-1.PNG "Deploy-1")
+    - ![](images/Deploy-2.PNG "Deploy-2")
+    - ![](images/Deploy-3.PNG "Deploy-3")
+    - ![](images/Deploy-4.PNG "Deploy-4")
 
   **Deploying service using YAML file.**
 
@@ -57,13 +57,13 @@
         - Then we have done curl to static IP assigned to node ( i.e. Node created by minikube cluster ) followed by node port # where my python application is running. i.e.`curl <IP-of-node>:<node-port-#>` for example  `curl 192.168.49.2:30001`.
     
 
-    - ![](../images/Service-1.PNG "service-1")
-    - ![](../images/Service-2.PNG "service-2")
-    - ![](../images/Service-3.PNG "service-3")
-    - ![](../images/Service-4.PNG "service-4")
-    - ![](../images/Service-5.PNG "service-5")
-    - ![](../images/Service-6.PNG "service-6")
-    - ![](../images/Service-7.PNG "service-7")
+    - ![](images/Service-1.PNG "service-1")
+    - ![](images/Service-2.PNG "service-2")
+    - ![](images/Service-3.PNG "service-3")
+    - ![](images/Service-4.PNG "service-4")
+    - ![](images/Service-5.PNG "service-5")
+    - ![](images/Service-6.PNG "service-6")
+    - ![](images/Service-7.PNG "service-7")
 
 
 **Cheat sheet for kubectl commands.**
@@ -90,19 +90,19 @@
         - NOTE : Any controller that we are going to deploy is eventually a pod running on top of k8's
 
 
-    - ![](../images/Ingress-1.PNG "Ingress-1")
-    - ![](../images/Ingress-2.PNG "Ingress-2")
-    - ![](../images/Ingress-3.PNG "Ingress-3")
-    - ![](../images/Ingress-4.PNG "Ingress-4")
+    - ![](images/Ingress-1.PNG "Ingress-1")
+    - ![](images/Ingress-2.PNG "Ingress-2")
+    - ![](images/Ingress-3.PNG "Ingress-3")
+    - ![](images/Ingress-4.PNG "Ingress-4")
 
     **Similar setup has been done for ingress todo python based app**
     - Implementation / YAML files have been placed under ingress directory of this repository.
     - Since we have introduced host section under ingress-todo.yaml due to which we have to make host file entry on the VM.
     - For this we have to navigate to `/etc/hosts` file where we have to make host file entry i.e. `IP of minikube cluster / Node IP` i.e. node deployed by minikube. i.e. <MINIKUBE_IP | K8s_NODE_IP> foo.bar.com as shown in the below snaps.
 
-        - ![](../images/Ingress-5.PNG "Ingress-5")
-        - ![](../images/Ingress-6.PNG "Ingress-6")
-        - ![](../images/Ingress-7.PNG "Ingress-7")
-        - ![](../images/Ingress-8.PNG "Ingress-8")
-        - ![](../images/Ingress-9.PNG "Ingress-9")
-        - ![](../images/Ingress-10.PNG "Ingress-10")
+        - ![](images/Ingress-5.PNG "Ingress-5")
+        - ![](images/Ingress-6.PNG "Ingress-6")
+        - ![](images/Ingress-7.PNG "Ingress-7")
+        - ![](images/Ingress-8.PNG "Ingress-8")
+        - ![](images/Ingress-9.PNG "Ingress-9")
+        - ![](images/Ingress-10.PNG "Ingress-10")
