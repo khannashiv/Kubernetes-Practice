@@ -63,18 +63,18 @@ Worker Node:
 **Solution:**
 
 | Feature                      | **Docker Swarm**                       | **Kubernetes**                                |
-|------------------------------|-----------------------------------------|-----------------------------------------------|
-| **Ease of setup**            | ✅ Simple and fast                      | ❌ More complex, steeper learning curve       |
+|------------------------------|-----------------------------------------|----------------------------------------------|
+| **Ease of setup**            | ✅ Simple and fast                      | ❌ More complex, steeper learning curve     |
 | **Complexity**               | Lightweight, minimal features           | Full-featured, enterprise-grade              |
 | **Scalability**              | Suitable for small to medium workloads  | Designed for large-scale, production systems |
-| **GUI Dashboard**            | ❌ No built-in dashboard                | ✅ Yes (Kubernetes Dashboard, Lens, etc.)    |
-| **High Availability**        | Limited support                        | Strong support with self-healing             |
-| **Load Balancing**           | Basic (round-robin)                    | Advanced (service discovery, DNS-based)      |
-| **Rolling Updates**          | ✅ Supported                            | ✅ More powerful and customizable            |
-| **Community & Ecosystem**    | Smaller, declining                     | Large, growing, and widely adopted           |
-| **Secrets & Configs**        | Basic support                          | Advanced, native support                     |
-| **Networking**               | Simple overlay                         | Advanced (ClusterIP, NodePort, Ingress, etc.)|
-| **Third-party integrations** | Limited                                | Vast ecosystem (monitoring, logging, CI/CD)  |
+| **GUI Dashboard**            | ❌ No built-in dashboard                | ✅ Yes (Kubernetes Dashboard, Lens, etc.)   |
+| **High Availability**        | Limited support                        | Strong support with self-healing              |
+| **Load Balancing**           | Basic (round-robin)                    | Advanced (service discovery, DNS-based)       |
+| **Rolling Updates**          | ✅ Supported                            | ✅ More powerful and customizable           |
+| **Community & Ecosystem**    | Smaller, declining                     | Large, growing, and widely adopted            |
+| **Secrets & Configs**        | Basic support                          | Advanced, native support                      |
+| **Networking**               | Simple overlay                         | Advanced (ClusterIP, NodePort, Ingress, etc.) |
+| **Third-party integrations** | Limited                                | Vast ecosystem (monitoring, logging, CI/CD)   |
 
 - **Use Docker Swarm**: Easy to use with minimal setup for small projects or quick demos.
 - **Use Kubernetes**: Advanced features, scalability, and strong community support—ideal for production environments.
@@ -140,12 +140,12 @@ Reference: [Kubernetes Services Documentation](https://kubernetes.io/docs/concep
 **Solution:**
 
 | Feature                | **NodePort**                    | **LoadBalancer**                      |
-|------------------------|----------------------------------|---------------------------------------|
+|------------------------|----------------------------------|--------------------------------------|
 | **Exposed on**         | Node’s IP + Node port           | External load balancer with public IP |
 | **Port Range**         | 30000–32767                     | Any port (managed by LB)              |
 | **Load Balancing**     | Basic (manual across nodes)     | Automatic (via cloud LB)              |
 | **Use Case**           | Dev, testing, internal clusters | Production, public services           |
-| **External IP**        | ❌ No (uses node IPs)           | ✅ Yes                                |
+| **External IP**        | ❌ No (uses node IPs)           | ✅ Yes                               |
 
 1. **NodePort**:
     - Exposes the service on a static port (30000–32767) on every node’s IP.
