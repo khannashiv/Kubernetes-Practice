@@ -1,4 +1,5 @@
 # My first deployment.yaml file.
+# Container port is the one where your application is running. 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,4 +20,4 @@ spec:
       - name: text-analyzer-deployment
         image: khannashiv/text-analyzer:46
         ports:
-        - containerPort: 80
+        - containerPort: 8000

@@ -8,4 +8,4 @@ spec:
   - name: text-analyzer-practice
     image: khannashiv/text-analyzer:46
     ports:
-    - containerPort: 80
+    - containerPort: 8000
