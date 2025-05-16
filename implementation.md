@@ -100,4 +100,5 @@
     - Since we have introduced host section under ingress-todo.yaml due to which we have to make host file entry on the VM.
     - For this we have to navigate to `/etc/hosts` file where we have to make host file entry i.e. `IP of minikube cluster / Node IP` i.e. node deployed by minikube. i.e. <MINIKUBE_IP | K8s_NODE_IP> foo.bar.com as shown in the below snaps.
 
-     - ![](images/ingress-5.PNG "Ingress-5")
+        - ![](images/ingress-5.PNG "Ingress-5")
+        - ![](images/Ingress-6.PNG "Ingress-6")
