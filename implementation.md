@@ -92,3 +92,17 @@
 
     - ![](../images/Ingress-1.PNG "Ingress-1")
     - ![](../images/Ingress-2.PNG "Ingress-2")
+    - ![](../images/Ingress-3.PNG "Ingress-3")
+    - ![](../images/Ingress-4.PNG "Ingress-4")
+
+    **Similar setup has been done for ingress todo python based app**
+    - Implementation / YAML files have been placed under ingress directory of this repository.
+    - Since we have introduced host section under ingress-todo.yaml due to which we have to make host file entry on the VM.
+    - For this we have to navigate to `/etc/hosts` file where we have to make host file entry i.e. `IP of minikube cluster / Node IP` i.e. node deployed by minikube. i.e. <MINIKUBE_IP | K8s_NODE_IP> foo.bar.com as shown in the below snaps.
+
+    - ![](../images/Ingress-5.PNG "Ingress-5")
+    - ![](../images/Ingress-6.PNG "Ingress-6")
+    - ![](../images/Ingress-7.PNG "Ingress-7")
+    - ![](../images/Ingress-8.PNG "Ingress-8")
+    - ![](../images/Ingress-9.PNG "Ingress-9")
+    - ![](../images/Ingress-10.PNG "Ingress-10")
