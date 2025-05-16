@@ -72,7 +72,7 @@
     - https://spacelift.io/blog/kubernetes-cheat-sheet
 
 
-**Deploying ingress resource using YAML file.**
+**Deploying ingress resource using YAML file.***
 
 - We have followed official documentaion to deploy ingess rsource on top of minikube cluster. Also in order to make ingress resource to work we need ingress controller.
 - Here in this demo we are using nginx as a ingress controller which will look for ingress resource.Since we are using minikube here so we will install ingress controller on top of mikikube K8s cluster by referring to following documetation.
