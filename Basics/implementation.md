@@ -25,7 +25,7 @@
 
 **Deploying deployment using YAML file.**
 
-- We have followed official documentaion to deploy pod in top of minikube cluster.
+- We have followed official documentaion to deploy deployment on top of minikube cluster.
     - Ref : https://kubernetes.io/docs/concepts/workloads/controllers/deployment/ 
 
         - Here we have created deployment.yaml file, which contains information about how many replicas for a pod kubernetes have to create.
@@ -41,7 +41,7 @@
 
   **Deploying service using YAML file.**
 
-- We have followed official documentaion to deploy pod in top of minikube cluster.
+- We have followed official documentaion to deploy service in top of minikube cluster.
     - Ref : https://kubernetes.io/docs/concepts/services-networking/service/
 
         - Here we have created service.yaml file, the Service type field in service.yaml determines how the service is exposed.
@@ -71,3 +71,24 @@
     - https://kubernetes.io/docs/reference/kubectl/quick-reference/
     - https://spacelift.io/blog/kubernetes-cheat-sheet
 
+
+**Deploying ingress resource using YAML file.**
+
+- We have followed official documentaion to deploy ingess rsource on top of minikube cluster. Also in order to make ingress resource to work we need ingress controller.
+- Here in this demo we are using nginx as a ingress controller which will look for ingress resource.Since we are using minikube here so we will install ingress controller on top of mikikube K8s cluster by referring to following documetation.
+    - Ref : 
+        - https://kubernetes.io/docs/concepts/services-networking/ingress/
+        - https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+        - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
+    - Some basic commands used while deploying ingress resource are shown below.
+        - `kubectl get deploy -A | grep text`
+        - `kubectl get svc -A | grep text`
+        - `kubectl get ingress -A | grep text`
+        - `kubectl get pods -A | grep nginx`
+        - `kubectl logs ingress-nginx-controller-56d7c84fd4-cfbc7 -n ingress-nginx`
+            - In above command `ingress-nginx-controller-56d7c84fd4-cfbc7` is the name of container which sits inside `ingress-nginx` namespace.
+        - NOTE : Any controller that we are going to deploy is eventually a pod running on top of k8's
+
+
+    - ![](../images/Ingress-1.PNG "Ingress-1")
+    - ![](../images/Ingress-2.PNG "Ingress-2")
