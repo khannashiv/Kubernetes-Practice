@@ -101,4 +101,8 @@
     - For this we have to navigate to `/etc/hosts` file where we have to make host file entry i.e. `IP of minikube cluster / Node IP` i.e. node deployed by minikube. i.e. <MINIKUBE_IP | K8s_NODE_IP> foo.bar.com as shown in the below snaps.
 
         - ![](images/ingress-5.PNG "Ingress-5")
-        - ![](images/Ingress-6.PNG "Ingress-6")
+        - ![](images/ingress-6.PNG "Ingress-6")
+        - ![](images/ingress-7.PNG "Ingress-7")
+        - ![](images/ingress-8.PNG "Ingress-8")
+        - ![](images/ingress-9.PNG "Ingress-9")
+        - ![](images/ingress-10.PNG "Ingress-10")
