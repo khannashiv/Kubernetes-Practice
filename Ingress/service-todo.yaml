@@ -1,4 +1,3 @@
-# My first service.yaml file.
 # Target port is the one where your application is running. 
 # One can look for the target port by looking at the dockerfile if your application is containerized.
 apiVersion: v1
