@@ -106,3 +106,7 @@
         - ![](images/ingress-8.PNG "Ingress-8")
         - ![](images/ingress-9.PNG "Ingress-9")
         - ![](images/ingress-10.PNG "Ingress-10")
+
+**Outcomes of host-based-routing setup done under ingress folder**
+
+- ![](images/Host-based-routing-1.PNG "Host-based-routing-1")
