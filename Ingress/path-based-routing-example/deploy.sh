@@ -11,7 +11,4 @@ kubectl apply -f ./k8s/app1-deployment-service.yaml
 kubectl apply -f ./k8s/app2-deployment-service.yaml
 kubectl apply -f ./k8s/ingress.yaml
 
-echo "Minikube IP:"
-minikube ip
-
-
+echo "Minikube IP is : $(minikube ip)"
