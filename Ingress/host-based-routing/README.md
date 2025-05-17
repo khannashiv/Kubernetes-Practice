@@ -5,7 +5,7 @@
     - minikube addons enable ingress
 
 2. Download & deploy
-    - unzip host-routing-k8s.zip
+    - unzip host-based-routing.zip
     - cd host-routing
     - chmod +x deploy.sh
     - ./deploy.sh
