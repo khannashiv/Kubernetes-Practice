@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment-1
+  labels:
+    app: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-container-1
+          image: caddy:latest
+          env:
+            - name: DB-PORT
+              valueFrom:
+                  configMapKeyRef:
+                    name: my-config-1
+                    key: db-port
+          ports:
+          - containerPort: 80
