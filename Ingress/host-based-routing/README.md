@@ -16,4 +16,11 @@
     - curl http://foo.bar.com
     - curl http://bar.foo.com
 
+    <!--
+        # The other way of doing curl is :
+        -- curl -H "Host: foo.bar.com" http://192.168.49.2
+            - H "Host: bar.foo.com" — Adds an HTTP Host header to the request.
+            - http://192.168.49.2 — Sends the request to this IP address (usually your Ingress controller, e.g. in Minikube).
+    -->
+
 
