@@ -31,7 +31,7 @@ We followed the [official documentation](https://kubernetes.io/docs/concepts/wor
     - Used `curl <POD_IP>:<APP_PORT>` (e.g., `curl 10.244.0.166:8000`)
 
 **Screenshot:**  
-![Pod-1](images/Pod-1.PNG)
+- ![Pod-1](images/Pod-1.PNG)
 
 ---
 
@@ -48,10 +48,10 @@ We used the [official documentation](https://kubernetes.io/docs/concepts/workloa
 3. Accessed the pod as before, via `minikube ssh` and curl to the pod IP and port.
 
 **Screenshots:**  
-![Deploy-1](images/Deploy-1.PNG)  
-![Deploy-2](images/Deploy-2.PNG)  
-![Deploy-3](images/Deploy-3.PNG)  
-![Deploy-4](images/Deploy-4.PNG)
+- ![Deploy-1](images/Deploy-1.PNG)  
+- ![Deploy-2](images/Deploy-2.PNG)  
+- ![Deploy-3](images/Deploy-3.PNG)  
+- ![Deploy-4](images/Deploy-4.PNG)
 
 ---
 
@@ -76,13 +76,13 @@ We followed the [official documentation](https://kubernetes.io/docs/concepts/ser
 3. Accessed the application via the node’s static IP and node port.
 
 **Screenshots:**  
-![Service-1](images/Service-1.PNG)  
-![Service-2](images/Service-2.PNG)  
-![Service-3](images/Service-3.PNG)  
-![Service-4](images/Service-4.PNG)  
-![Service-5](images/Service-5.PNG)  
-![Service-6](images/Service-6.PNG)  
-![Service-7](images/Service-7.PNG)
+- ![Service-1](images/Service-1.PNG)  
+- ![Service-2](images/Service-2.PNG)  
+- ![Service-3](images/Service-3.PNG)  
+- ![Service-4](images/Service-4.PNG)  
+- ![Service-5](images/Service-5.PNG)  
+- ![Service-6](images/Service-6.PNG)  
+- ![Service-7](images/Service-7.PNG)
 
 ---
 
@@ -113,10 +113,10 @@ kubectl logs ingress-nginx-controller-56d7c84fd4-cfbc7 -n ingress-nginx
 > Note: The controller runs as a pod inside the `ingress-nginx` namespace.
 
 **Screenshots:**  
-![Ingress-1](images/Ingress-1.PNG)  
-![Ingress-2](images/Ingress-2.PNG)  
-![Ingress-3](images/Ingress-3.PNG)  
-![Ingress-4](images/Ingress-4.PNG)
+- ![Ingress-1](images/Ingress-1.PNG)  
+- ![Ingress-2](images/Ingress-2.PNG)  
+- ![Ingress-3](images/Ingress-3.PNG)  
+- ![Ingress-4](images/Ingress-4.PNG)
 
 ---
 
@@ -128,12 +128,12 @@ kubectl logs ingress-nginx-controller-56d7c84fd4-cfbc7 -n ingress-nginx
   <MINIKUBE_IP> <HOSTNAME>
   ```
 **Screenshots:**  
-![Ingress-5](images/ingress-5.PNG)  
-![Ingress-6](images/ingress-6.PNG)  
-![Ingress-7](images/ingress-7.PNG)  
-![Ingress-8](images/ingress-8.PNG)  
-![Ingress-9](images/ingress-9.PNG)  
-![Ingress-10](images/ingress-10.PNG)
+- ![Ingress-5](images/ingress-5.PNG)  
+- ![Ingress-6](images/ingress-6.PNG)  
+- ![Ingress-7](images/ingress-7.PNG)  
+- ![Ingress-8](images/ingress-8.PNG)  
+- ![Ingress-9](images/ingress-9.PNG)  
+- ![Ingress-10](images/ingress-10.PNG)
 
 ---
 
@@ -142,41 +142,41 @@ kubectl logs ingress-nginx-controller-56d7c84fd4-cfbc7 -n ingress-nginx
 ### Host-Based Routing
 
 Screenshots:  
-![Host-based-routing-1](images/Host-based-routing-1.PNG)  
-![Host-based-routing-2](images/Host-based-routing-2.PNG)  
-![Host-based-routing-3](images/Host-based-routing-3.PNG)  
-![Host-based-routing-4](images/Host-based-routing-4.PNG)  
-![Host-based-routing-5](images/Host-based-routing-5.PNG)  
-![Host-based-routing-6](images/Host-based-routing-6.PNG)  
-![Host-based-routing-7](images/Host-based-routing-7.PNG)  
-![Host-based-routing-8](images/Host-based-routing-8.PNG)  
-![Host-based-routing-9](images/Host-based-routing-9.PNG)  
-![Host-based-routing-10](images/Host-based-routing-10.PNG)  
-![Host-based-routing-11](images/Host-based-routing-11.PNG)  
-![Host-based-routing-12](images/Host-based-routing-12.PNG)
+- ![Host-based-routing-1](images/Host-based-routing-1.PNG)  
+- ![Host-based-routing-2](images/Host-based-routing-2.PNG)  
+- ![Host-based-routing-3](images/Host-based-routing-3.PNG)  
+- ![Host-based-routing-4](images/Host-based-routing-4.PNG)  
+- ![Host-based-routing-5](images/Host-based-routing-5.PNG)  
+- ![Host-based-routing-6](images/Host-based-routing-6.PNG)  
+- ![Host-based-routing-7](images/Host-based-routing-7.PNG)  
+- ![Host-based-routing-8](images/Host-based-routing-8.PNG)  
+- ![Host-based-routing-9](images/Host-based-routing-9.PNG)  
+- ![Host-based-routing-10](images/Host-based-routing-10.PNG)  
+- ![Host-based-routing-11](images/Host-based-routing-11.PNG)  
+- ![Host-based-routing-12](images/Host-based-routing-12.PNG)
 
 ---
 
 ### Path-Based Routing
 
 Screenshots:  
-![Path-based-routing-1](images/Path-based-routing-1.PNG)  
-![Path-based-routing-2](images/Path-based-routing-2.PNG)  
-![Path-based-routing-3](images/Path-based-routing-3.PNG)  
-![Path-based-routing-4](images/Path-based-routing-4.PNG)  
-![Path-based-routing-5](images/Path-based-routing-5.PNG)  
-![Path-based-routing-6](images/Path-based-routing-6.PNG)  
-![Path-based-routing-7](images/Path-based-routing-7.PNG)
+- ![Path-based-routing-1](images/Path-based-routing-1.PNG)  
+- ![Path-based-routing-2](images/Path-based-routing-2.PNG)  
+- ![Path-based-routing-3](images/Path-based-routing-3.PNG)  
+- ![Path-based-routing-4](images/Path-based-routing-4.PNG)  
+- ![Path-based-routing-5](images/Path-based-routing-5.PNG)  
+- ![Path-based-routing-6](images/Path-based-routing-6.PNG)  
+- ![Path-based-routing-7](images/Path-based-routing-7.PNG)
 
 ---
 
 ### Wildcard Routing
 
 Screenshots:  
-![Wildcard-routing-1](images/Wildcard-routing-1.PNG)  
-![Wildcard-routing-2](images/Wildcard-routing-2.PNG)  
-![Wildcard-routing-3](images/Wildcard-routing-3.PNG)  
-![Wildcard-routing-4](images/Wildcard-routing-4.PNG)  
-![Wildcard-routing-5](images/Wildcard-routing-5.PNG)  
-![Wildcard-routing-6](images/Wildcard-routing-6.PNG)  
-![Wildcard-routing-7](images/Wildcard-routing-7.PNG)
+- ![Wildcard-routing-1](images/Wildcard-routing-1.PNG)  
+- ![Wildcard-routing-2](images/Wildcard-routing-2.PNG)  
+- ![Wildcard-routing-3](images/Wildcard-routing-3.PNG)  
+- ![Wildcard-routing-4](images/Wildcard-routing-4.PNG)  
+- ![Wildcard-routing-5](images/Wildcard-routing-5.PNG)  
+- ![Wildcard-routing-6](images/Wildcard-routing-6.PNG)  
+- ![Wildcard-routing-7](images/Wildcard-routing-7.PNG)
