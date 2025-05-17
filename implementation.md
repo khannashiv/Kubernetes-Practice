@@ -133,3 +133,5 @@
     - ![](images/Path-based-routing-7.PNG "Path-based-routing-7")
 
 - ## Outcomes of wildcard setup done under ingress folder
+
+    - ![](images/Wildcard-routing-1.PNG "Wildcard-routing-1")
