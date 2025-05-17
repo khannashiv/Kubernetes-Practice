@@ -107,7 +107,7 @@
         - ![](images/ingress-9.PNG "Ingress-9")
         - ![](images/ingress-10.PNG "Ingress-10")
 
-- #### Outcomes of host-based-routing setup done under ingress folder
+- ## Outcomes of host-based-routing setup done under ingress folder
 
     - ![](images/Host-based-routing-1.PNG "Host-based-routing-1")
     - ![](images/Host-based-routing-2.PNG "Host-based-routing-2")
@@ -121,3 +121,5 @@
     - ![](images/Host-based-routing-10.PNG "Host-based-routing-10")
     - ![](images/Host-based-routing-11.PNG "Host-based-routing-11")
     - ![](images/Host-based-routing-12.PNG "Host-based-routing-12")
+
+- ## Outcomes of path-based-routing setup done under ingress folder
