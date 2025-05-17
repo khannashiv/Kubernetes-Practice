@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: apache
-        image: httpd:alpine
+        image: khannashiv/apache-local:v1
         ports:
         - containerPort: 80

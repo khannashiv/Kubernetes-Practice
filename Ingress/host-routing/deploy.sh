@@ -3,8 +3,8 @@ set -e
 eval $(minikube docker-env)
 
 echo "Building images..."
-docker build -t nginx-local ./nginx
-docker build -t apache-local ./apache
+docker build -t khannashiv/nginx-local:v1 ./nginx
+docker build -t khannashiv/apache-local:v1 ./apache
 
 echo "Deploying to Kubernetes..."
 kubectl apply -f k8s/nginx-deployment.yaml
