@@ -135,3 +135,9 @@
 - ## Outcomes of wildcard setup done under ingress folder
 
     - ![](images/Wildcard-routing-1.PNG "Wildcard-routing-1")
+    - ![](images/Wildcard-routing-2.PNG "Wildcard-routing-2")
+    - ![](images/Wildcard-routing-3.PNG "Wildcard-routing-3")
+    - ![](images/Wildcard-routing-4.PNG "Wildcard-routing-4")
+    - ![](images/Wildcard-routing-5.PNG "Wildcard-routing-5")
+    - ![](images/Wildcard-routing-6.PNG "Wildcard-routing-6")
+    - ![](images/Wildcard-routing-7.PNG "Wildcard-routing-7")
