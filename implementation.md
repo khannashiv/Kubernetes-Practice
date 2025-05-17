@@ -123,3 +123,11 @@
     - ![](images/Host-based-routing-12.PNG "Host-based-routing-12")
 
 - ## Outcomes of path-based-routing setup done under ingress folder
+
+    - ![](images/Path-based-routing-1.PNG "Path-based-routing-1")
+    - ![](images/Path-based-routing-2.PNG "Path-based-routing-2")
+    - ![](images/Path-based-routing-3.PNG "Path-based-routing-3")
+    - ![](images/Path-based-routing-4.PNG "Path-based-routing-4")
+    - ![](images/Path-based-routing-5.PNG "Path-based-routing-5")
+    - ![](images/Path-based-routing-6.PNG "Path-based-routing-6")
+    - ![](images/Path-based-routing-7.PNG "Path-based-routing-7")
