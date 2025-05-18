@@ -85,7 +85,7 @@ Each key in the ConfigMap becomes a file in that directory.
 - `/etc/foo/db-port`
 - `/etc/foo/db-url`
 - The content of each file is the value of the key.
-- Changes to the ConfigMap are reflected inside the pod/container without a restart. (But you must update the ConfigMap in Kubernetes, not just the YAML file.)
+- Changes to the ConfigMap are reflected inside the pod/container without a restart. (But you must update the ConfigMap in Kubernetes using kubectl apply -f <path-2-configmap-file>, not just the YAML file.)
 
 ---
 
