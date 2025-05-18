@@ -1,82 +1,97 @@
-## Implementation of config map as well as secret in the form of environment variable as well as volume mount.
+# Kubernetes: ConfigMap & Secret Implementation  
+_Using as Environment Variables and Volume Mounts_
 
-**ConfigMap Definition**
+---
+## ConfigMap
 
-- A ConfigMap is an API object that lets you store configuration for other objects to use. Unlike most Kubernetes objects that have a spec, a ConfigMap has data and binaryData fields. These fields accept key-value pairs as their values.
+### What is a ConfigMap?
 
-- A ConfigMap is a Kubernetes object used to store non-sensitive key-value pairs (such as config options, settings, flags, or environment-specific data). These values can be consumed by your application without hardcoding them into your container image.
+A **ConfigMap** is a Kubernetes object used to store non-sensitive key-value pairs (such as config options, settings, flags, or environment-specific data). These can be consumed by your application in various ways.
 
- - There are four different ways that you can use a ConfigMap to configure a container inside a Pod:
+- **Reference Docs:** [Kubernetes ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/)
 
-    - Inside a container command and args.
-    - Environment variables for a container.
-    - Add a file in read-only volume, for the application to read.
-    - Write code to run inside the Pod that uses the Kubernetes API to read a ConfigMap.
+#### Ways to Use ConfigMap in a Pod
 
-- Refrence Docs : - Ref Docs : https://kubernetes.io/docs/concepts/configuration/configmap/
+1. Inside a container’s command and args
+2. As environment variables for a container
+3. As files in a read-only volume, for the application to read
+4. By code inside the Pod that reads the ConfigMap via Kubernetes API
 
-**ConfigMap as environment variable**
+---
 
-  **Why Use ConfigMap as Environment Variables?**
-   - Makes your app portable and configurable across environments.
-   - Keeps your config outside of the container.
-   - Enables easy updates to configuration without rebuilding your Docker image.
-   - Config Map from commandline : `kubectl create configmap app-config --from-literal=LOG_LEVEL=debug --from-literal=PORT=8080`
-   - In YAML format above command looks:
-            apiVersion: v1
-            kind: ConfigMap
-            metadata:
-            name: app-config
-            data:
-                LOG_LEVEL: debug
-                PORT: "8080"
-    
-    **Behavior & Considerations**
+### Using ConfigMap as Environment Variables
 
-    | Aspect                 | Behavior                                                                                     |
-    | ---------------------- | -------------------------------------------------------------------------------------------- |
-    | **Non-existent keys**  | If a key doesn't exist in the ConfigMap, the Pod **won’t start** (with `env`, not `envFrom`) |
-    | **Immutable option**   | You can make a ConfigMap **immutable** to avoid accidental changes (`immutable: true`)       |
-    | **Validation**         | No type validation — all values are plain strings                                            |
+#### Why Use as Environment Variables?
 
-    Q: Meaning of | **Validation**  | No type validation — all values are plain strings  | ?
-    Sol : Kubernetes does not enforce or interpret the data types of the values stored in a ConfigMap. It treats everything as a plain string — regardless of whether it looks like a number, boolean, or list.
+- Keeps your app portable and configurable across environments
+- Keeps config outside the container image
+- Enables easy config updates without rebuilding your Docker image
 
-    - Use `envFrom` when you want simple injection of all values.
-    - Use `env` when you want control, renaming, or fallback values.
-    - Use ConfigMap with Secrets when you have both public and sensitive values.
-    - Don’t store passwords, API keys, or tokens in ConfigMaps — use Secrets instead.
+#### Example
 
-    Q: When to use `env` or `envFrom` or in which situation we have to use env|envFrom ?
-    Sol : 
-    | Situation                                       | Recommended |
-    | ----------------------------------------------- | ----------- |
-    | We want all config key-values as-is             | `envFrom`   |
-    | We want to select only certain keys             | `env`       |
-    | We want to rename config keys                   | `env`       |
-    | We want to mix ConfigMap, Secret, and literals  | `env`       |
-    | We want simplicity and have a flat config       | `envFrom`   |
+- **Command Line:**  
+  `kubectl create configmap app-config --from-literal=LOG_LEVEL=debug --from-literal=PORT=8080`
 
+- **YAML Format:**
+  ```yaml
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: app-config
+  data:
+    LOG_LEVEL: debug
+    PORT: "8080"
+  ```
 
-    - The `envFrom` field instructs Kubernetes to create environment variables from the sources nested within it. The inner `configMapRef` refers to a ConfigMap by its name and selects `all its key-value pairs`. Add the Pod to your cluster, then retrieve its logs to see the output from the printenv command. 
+#### Behavior & Considerations
 
-    - Sometimes a Pod won't require access to all the values in a ConfigMap. For example, you could have another Pod which only uses the username value from the ConfigMap. For this use case, you can use the `env.valueFrom` syntax instead, which lets you select individual keys in a ConfigMap. The name of the environment variable can also be different from the key within the ConfigMap.
+| Aspect              | Behavior                                                                                       |
+|---------------------|-----------------------------------------------------------------------------------------------|
+| **Non-existent keys**| If a key doesn't exist in the ConfigMap, the Pod **won’t start** (with `env`, not `envFrom`) |
+| **Immutable option**| You can make a ConfigMap **immutable** (`immutable: true`)                                    |
+| **Validation**      | No type validation — all values are treated as plain strings                                  |
 
-**ConfigMap as volume**
+> **Q:** What does “No type validation — all values are plain strings” mean?  
+> **A:** Kubernetes does not enforce or interpret the data types of ConfigMap values. Everything is treated as a string.
 
--  ConfigMaps in Kubernetes can be mounted as volumes into Pods.
+#### When to Use `env` vs `envFrom`?
 
-- Use Case
-    - You need to inject entire config files.
-    - The application expects a file (rather than environment variables).
-    - You want dynamic configuration without rebuilding the container.
-    - In this demo: ConfigMap yaml file i.e. my-config-1.yaml is mounted to `/etc/foo` inside the pod/container.
-    - The keys in configmap becomes a files inside pod i.e.` /etc/foo/db-port` as well as `/etc/foo/db-url`
-        - Each key in the ConfigMap becomes a file in the mounted directory.
-        - File contents are the values of the keys.
-        - Changes to the ConfigMap after mounting are automatically reflected inside kubernetes pod/container, we don't have to restart pod/deployment. But changes made to config map yaml file has to be re-applied using kubectl apply -f my-config-1.yaml but this will not restart the pod / container.
+| Situation                                     | Recommended |
+|-----------------------------------------------|-------------|
+| Want all config key-values as-is              | `envFrom`   |
+| Want to select only certain keys              | `env`       |
+| Want to rename config keys                    | `env`       |
+| Want to mix ConfigMap, Secret, and literals   | `env`       |
+| Want simplicity and have a flat config        | `envFrom`   |
 
-**Outcomes of config-map with environmant variables as well with volumes**
+- Use `envFrom` for simple injection of all values.
+- Use `env` for more control (select keys, rename, mix with secrets).
+- Do not store sensitive info in ConfigMaps—use Secrets for those.
+
+---
+
+### Using ConfigMap as a Volume
+
+- **ConfigMaps** can be mounted as volumes into Pods.
+- **Use Cases:**
+  - Need to inject entire config files
+  - The application expects a file rather than environment variables
+  - Want dynamic config without rebuilding the container
+
+**Example:**  
+ConfigMap YAML (e.g., `my-config-1.yaml`) is mounted to `/etc/foo` in the container.  
+Each key in the ConfigMap becomes a file in that directory.
+
+- `/etc/foo/db-port`
+- `/etc/foo/db-url`
+- The content of each file is the value of the key.
+- Changes to the ConfigMap are reflected inside the pod/container without a restart. (But you must update the ConfigMap in Kubernetes, not just the YAML file.)
+
+---
+
+### Outcomes: ConfigMap
+
+_Screenshots (for reference):_
 
 - ![Config-map-1](../images/Config-map-1.PNG)
 - ![Config-map-2](../images/Config-map-2.PNG)
@@ -89,36 +104,49 @@
 - ![Config-map-9](../images/Config-map-9.PNG)
 - ![Config-map-10](../images/Config-map-10.PNG)
 
+---
 
-**Secret Definition**
+## Secret
 
-- A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such information might otherwise be put in a Pod specification or in a container image. Using a Secret means that you don't need to include confidential data in your application code.
+### What is a Secret?
 
--Refrence Docs : - Ref Docs : https://kubernetes.io/docs/concepts/configuration/secret/
+A **Secret** is a Kubernetes object that contains a small amount of sensitive data such as a password, token, or key. It’s designed for sensitive information that you don’t want in plain ConfigMaps, Pod specs, or container images.
 
-- NOTE : There is a logical (and practical) order of resource creation in Kubernetes — but it's not a strict requirement enforced by Kubernetes itself.
+- **Reference Docs:** [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret/)
 
-    1. Secrets / ConfigMaps
-    2. Services
-    3. Deployments / StatefulSets / Pods
-    4. Ingress
-    5. Many more ....
-    Ref : https://stackoverflow.com/questions/51957676/helm-install-in-certain-order
+---
 
-**Type of Secrets in k8s**
-    - Ref : https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
+#### Order of Resource Creation
 
-| Secret Type                           | Purpose                                       | Use Case                                    |
-| ------------------------------------- | --------------------------------------------- | --------------------------------------------|
-| `Opaque`                              | ✅ General-purpose key-value data             |🔹Storing app config like DB credentials    |
-| `kubernetes.io/dockerconfigjson`      | For Docker image pull credentials             | 🔸 Used in `imagePullSecrets`               |
-| `kubernetes.io/tls`                   | For TLS certificates                          | 🔸 Requires `tls.crt` and `tls.key` keys    |
-| `bootstrap.kubernetes.io/token`       | For cluster bootstrapping tokens              | 🔸 Used internally by kubeadm               |
-| `kubernetes.io/basic-auth`            | Basic auth (requires `username` & `password`) | 🔸 Rarely used in modern apps               |
-| `kubernetes.io/ssh-auth`              | SSH keys                                      | 🔸 Used for Git access or SSH-based apps    |
-| `kubernetes.io/service-account-token` | Mounted automatically into pods               | 🔸 Used by service accounts (not manual use)|
+While not strictly enforced, it’s common to create resources in this order:
 
-**Outcomes of secret with environmant variables as well with volumes**
+1. **Secrets / ConfigMaps**
+2. **Services**
+3. **Deployments / StatefulSets / Pods**
+4. **Ingress**
+5. ...and more
+
+_Reference: [Helm Install Order](https://stackoverflow.com/questions/51957676/helm-install-in-certain-order)_
+
+---
+
+### Types of Secrets in Kubernetes
+
+| Secret Type                           | Purpose                                    | Use Case                                  |
+|---------------------------------------|--------------------------------------------|-------------------------------------------|
+| `Opaque`                              | General key-value data                     | App config (e.g., DB credentials)         |
+| `kubernetes.io/dockerconfigjson`      | Docker image pull credentials              | Used in `imagePullSecrets`                |
+| `kubernetes.io/tls`                   | TLS certificates                           | Requires `tls.crt` and `tls.key` keys     |
+| `bootstrap.kubernetes.io/token`       | Cluster bootstrapping tokens               | Used by kubeadm                           |
+| `kubernetes.io/basic-auth`            | Basic auth (`username` & `password`)       | Rarely used in modern apps                |
+| `kubernetes.io/ssh-auth`              | SSH keys                                   | Git access or SSH-based apps              |
+| `kubernetes.io/service-account-token` | Mounted automatically into pods            | Used by service accounts (not manual use) |
+
+---
+
+### Outcomes: Secret
+
+_Screenshots (for reference):_
 
 - ![Secret-1](../images/Secret-1.PNG)
 - ![Secret-2](../images/Secret-2.PNG)
@@ -129,3 +157,9 @@
 - ![Secret-7](../images/Secret-7.PNG)
 - ![Secret-8](../images/Secret-8.PNG)
 - ![Secret-9](../images/Secret-9.PNG)
+
+---
+
+**Tip:**  
+- Use **ConfigMaps** for non-sensitive config.
+- Use **Secrets** for sensitive information (passwords, API keys, etc).
