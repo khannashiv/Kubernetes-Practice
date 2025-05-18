@@ -80,4 +80,4 @@
 
 **Outcomes of config-map with environmant variables as well with volumes**
 
-- ![Config-map-1](images/Config-map-1.PNG)
+- ![Config-map-1](../images/Config-map-1.PNG)
