@@ -24,14 +24,13 @@
    - Enables easy updates to configuration without rebuilding your Docker image.
    - Config Map from commandline : `kubectl create configmap app-config --from-literal=LOG_LEVEL=debug --from-literal=PORT=8080`
    - In YAML format above command looks:
-
-     `  apiVersion: v1
-        kind: ConfigMap
-        metadata:
-          name: app-config
-        data:
-            LOG_LEVEL: debug
-            PORT: "8080"`
+        `  apiVersion: v1
+            kind: ConfigMap
+            metadata:
+            name: app-config
+            data:
+                LOG_LEVEL: debug
+                PORT: "8080"`
     
     **Behavior & Considerations**
 
