@@ -161,29 +161,44 @@ _Screenshots (for reference):_
 ## Commands Used for Deploying ConfigMap and Secret
 
 ```sh
+################ Configmap related commands.
 kubectl apply -f deployment-1.yaml
 kubectl apply -f service-1.yaml
 kubectl apply -f configmap-1.yaml
 kubectl get svc
 kubectl get deploy
 kubectl get cm       
-kubectl describe cm my-config-1
+kubectl describe cm my-config-1                                     # my-config-1 : Name for the config map.
 kubectl edit cm my-config-1
 kubectl get pods -o wide | grep my-app-deployment-1
-curl -ivv 192.168.49.2:30003
+curl -ivv 192.168.49.2:30003                                        # 192.168.49.2:30003 : minikube/node ip:node port
 kubectl exec -it my-app-deployment-1-85d9857f5d-q2vz7 -- /bin/sh
 
+#################### Secret related commands .
 kubectl apply -f /Practice-Kubernetes/secret-deployment-env.yaml
 kubectl get deploy
 kubectl get secret
-kubectl describe secret my-app-secret
+kubectl describe secret my-app-secret                               # my-app-secret : This is secret name.
 kubectl edit secret my-app-secret
 kubectl logs my-app-deployment-64fbb9c585-tw8vx
-kubectl describe pod  my-app-deployment-64fbb9c585-tw8vx
-echo -n 'YWRtaW4=' | base64 -d # Output: admin
-echo -n 'QTFkMkAzNDU=' | base64 -d # Output: A1d2@345
-kubectl exec -it my-app-deployment-64fbb9c585-tw8vx -- /bin/sh
+kubectl describe pod  my-app-deployment-64fbb9c585-tw8vx            # my-app-deployment-64fbb9c585-tw8vx : This is pod name.
+echo -n 'YWRtaW4=' | base64 -d                                      # Output: admin
+echo -n 'QTFkMkAzNDU=' | base64 -d                                  # Output: A1d2@345
+kubectl exec -it my-app-deployment-64fbb9c585-tw8vx -- /bin/sh      # Going inside pod.
 history | tail -n 40
+
+kubectl expose pod my-pod --port=80 --target-port=8080 --type=NodePort
+kubectl expose deployment my-deploy --port=80 --target-port=8080 --type=NodePort
+kubectl expose rc my-rc --port=80 --target-port=8080 --type=NodePort
+
+# | Option               | Meaning                                                                                                 |
+# | -------------------- | ------------------------------------------------------------------------------------------------------- |
+# | `kubectl expose`     | Creates a **Service** to expose a resource (pod, deployment, etc.).                                     |
+# | `pod my-pod`         | You’re exposing a **specific pod** named `my-pod`.                                                      |
+# | `--port=80`          | Sets the **service port** (the port other services or users will use to access it).                     |
+# | `--target-port=8080` | Specifies the **port inside the pod** where your app is actually running.                               |
+# | `--type=NodePort`    | Exposes the service **outside the cluster** on a port from the NodePort range (default: `30000–32767`). |
+
 ```
 
 ---

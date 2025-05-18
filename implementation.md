@@ -180,3 +180,25 @@ Screenshots:
 - ![Wildcard-routing-5](images/Wildcard-routing-5.PNG)  
 - ![Wildcard-routing-6](images/Wildcard-routing-6.PNG)  
 - ![Wildcard-routing-7](images/Wildcard-routing-7.PNG)
+
+<!--
+ Q: Whenever I run kubectl get svc, I'm geting o/p where one of the column is PORT(S) : 80:31000/TCP  where we see port1:port2/ protocol. Here what is port1 & what is port 2 ?
+ Sol :
+
+ For example :PORT(S): 80:31000/TCP : more generic : <port>:<nodePort>/<protocol>
+
+ What Each Part Means:
+
+        -- port (left side) — This is the Service Port (spec.ports.port) .The port that clients inside the cluster use to access the service.
+        -- nodePort (right side) — This is the NodePort (spec.ports.nodePort).The port exposed on each node’s IP address to access the service from outside the cluster.Only applies to NodePort or LoadBalancer type services.
+        -- protocol — Usually TCP, but can also be UDP or others.
+
+        So in 80:31000/TCP:
+            -- 80 → service port inside the cluster (used by other services/pods).
+            -- 31000 → port open on each Node’s external IP (used for external access).
+            -- TCP → protocol being used.
+            -- Note: targetPort (e.g., 8080) is not shown in kubectl get svc, but it's where the traffic ultimately ends up — the port your pod/container is actually listening on.
+
+        Flow Summary :
+            -- External user → NodeIP:31000 → forwards to Service Port 80 → routed to a pod's targetPort 8080
+-->
