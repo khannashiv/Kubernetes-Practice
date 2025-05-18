@@ -1,6 +1,6 @@
-## Implementation of config map in the form of environment variable as well as volume mount.
+## Implementation of config map as well as secret in the form of environment variable as well as volume mount.
 
-**ConfigMap Definition & Definition**
+**ConfigMap Definition**
 
 - A ConfigMap is an API object that lets you store configuration for other objects to use. Unlike most Kubernetes objects that have a spec, a ConfigMap has data and binaryData fields. These fields accept key-value pairs as their values.
 
@@ -88,3 +88,44 @@
 - ![Config-map-8](../images/Config-map-8.PNG)
 - ![Config-map-9](../images/Config-map-9.PNG)
 - ![Config-map-10](../images/Config-map-10.PNG)
+
+
+**Secret Definition**
+
+- A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such information might otherwise be put in a Pod specification or in a container image. Using a Secret means that you don't need to include confidential data in your application code.
+
+-Refrence Docs : - Ref Docs : https://kubernetes.io/docs/concepts/configuration/secret/
+
+- NOTE : There is a logical (and practical) order of resource creation in Kubernetes — but it's not a strict requirement enforced by Kubernetes itself.
+
+    1. Secrets / ConfigMaps
+    2. Services
+    3. Deployments / StatefulSets / Pods
+    4. Ingress
+    5. Many more ....
+    Ref : https://stackoverflow.com/questions/51957676/helm-install-in-certain-order
+
+**Type of Secrets in k8s**
+    - Ref : https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
+
+| Secret Type                           | Purpose                                       | Use Case                                    |
+| ------------------------------------- | --------------------------------------------- | --------------------------------------------|
+| `Opaque`                              | ✅ General-purpose key-value data             |🔹Storing app config like DB credentials    |
+| `kubernetes.io/dockerconfigjson`      | For Docker image pull credentials             | 🔸 Used in `imagePullSecrets`               |
+| `kubernetes.io/tls`                   | For TLS certificates                          | 🔸 Requires `tls.crt` and `tls.key` keys    |
+| `bootstrap.kubernetes.io/token`       | For cluster bootstrapping tokens              | 🔸 Used internally by kubeadm               |
+| `kubernetes.io/basic-auth`            | Basic auth (requires `username` & `password`) | 🔸 Rarely used in modern apps               |
+| `kubernetes.io/ssh-auth`              | SSH keys                                      | 🔸 Used for Git access or SSH-based apps    |
+| `kubernetes.io/service-account-token` | Mounted automatically into pods               | 🔸 Used by service accounts (not manual use)|
+
+**Outcomes of secret with environmant variables as well with volumes**
+
+- ![Secret-1](../images/Secret-1.PNG)
+- ![Secret-2](../images/Secret-2.PNG)
+- ![Secret-3](../images/Secret-3.PNG)
+- ![Secret-4](../images/Secret-4.PNG)
+- ![Secret-5](../images/Secret-5PNG)
+- ![Secret-6](../images/Secret-6.PNG)
+- ![Secret-7](../images/Secret-7.PNG)
+- ![Secret-8](../images/Secret-8.PNG)
+- ![Secret-9](../images/Secret-9.PNG)
