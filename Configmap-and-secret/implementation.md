@@ -159,6 +159,31 @@ _Screenshots (for reference):_
 - ![Secret-9](../images/Secret-9.PNG)
 
 ---
+**Commands used for deplying configmap as well as secret**
+
+ - kubectl apply -f deployment-1.yaml
+ - kubectl apply -f service-1.yaml
+ - kubectl apply -f configmap-1.yaml
+ - kubectl get svc
+ - kubectl get deploy
+ - kubectl get cm       
+ - kubectl describe cm my-config-1
+ - kubectl edit cm my-config-1
+ - kubectl get pods -o wide | grep my-app-deployment-1
+ - curl -ivv 192.168.49.2:30003
+ - kubectl exec -it my-app-deployment-1-85d9857f5d-q2vz7 -- /bin/sh
+
+ - kubectl apply -f /Practice-Kubernetes/secret-deployment-env.yaml
+ - kuectl  get deploy
+ - kubectl get secret
+ - kubectl describe secret my-app-secret
+ - kubectl edit secret my-app-secret
+ - kubectl logs my-app-deployment-64fbb9c585-tw8vx
+ - kubectl describe pod  my-app-deployment-64fbb9c585-tw8vx
+ - echo -n 'YWRtaW4=' | base64 -d : O/p as : admin ubuntu@ubuntu-virtual-machine:~$ 
+ - echo -n 'QTFkMkAzNDU=' | base64 -d : O/p: A1d2@345 ubuntu@ubuntu-virtual-machine:~$
+ - kubectl exec -it my-app-deployment-64fbb9c585-tw8vx -- /bin/sh
+ - history | tail -n 40
 
 **Tip:**  
 - Use **ConfigMaps** for non-sensitive config.
