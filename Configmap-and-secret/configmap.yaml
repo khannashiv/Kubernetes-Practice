@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: my-config-1
 data:
-  db-port: "3306"
+  db-port: "3306" # Updated this port number to some diffrent value i.e.4050 for testing volume initally it was 3306 for testing env variable concept.
   db-url: "postgresql://user:password@host:port/database"
 

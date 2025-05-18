@@ -27,6 +27,3 @@ spec:
       - name: foo
         configMap:
           name: my-config-1
-
-
-
