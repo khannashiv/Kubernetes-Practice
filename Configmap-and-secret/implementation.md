@@ -161,17 +161,17 @@ _Screenshots (for reference):_
 ---
 **Commands used for deplying configmap as well as secret**
 
- - kubectl apply -f deployment-1.yaml
- - kubectl apply -f service-1.yaml
- - kubectl apply -f configmap-1.yaml
- - kubectl get svc
- - kubectl get deploy
- - kubectl get cm       
- - kubectl describe cm my-config-1
- - kubectl edit cm my-config-1
- - kubectl get pods -o wide | grep my-app-deployment-1
- - curl -ivv 192.168.49.2:30003
- - kubectl exec -it my-app-deployment-1-85d9857f5d-q2vz7 -- /bin/sh
+  - kubectl apply -f deployment-1.yaml
+  - kubectl apply -f service-1.yaml
+  - kubectl apply -f configmap-1.yaml
+  - kubectl get svc
+  - kubectl get deploy
+  - kubectl get cm       
+  - kubectl describe cm my-config-1
+  - kubectl edit cm my-config-1
+  - kubectl get pods -o wide | grep my-app-deployment-1
+  - curl -ivv 192.168.49.2:30003
+  - kubectl exec -it my-app-deployment-1-85d9857f5d-q2vz7 -- /bin/sh
 
  - kubectl apply -f /Practice-Kubernetes/secret-deployment-env.yaml
  - kuectl  get deploy
