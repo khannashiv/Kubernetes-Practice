@@ -81,3 +81,12 @@
 **Outcomes of config-map with environmant variables as well with volumes**
 
 - ![Config-map-1](../images/Config-map-1.PNG)
+- ![Config-map-2](../images/Config-map-2.PNG)
+- ![Config-map-3](../images/Config-map-3.PNG)
+- ![Config-map-4](../images/Config-map-4.PNG)
+- ![Config-map-5](../images/Config-map-5.PNG)
+- ![Config-map-6](../images/Config-map-6.PNG)
+- ![Config-map-7](../images/Config-map-7.PNG)
+- ![Config-map-8](../images/Config-map-8.PNG)
+- ![Config-map-9](../images/Config-map-9.PNG)
+- ![Config-map-10](../images/Config-map-10.PNG)
