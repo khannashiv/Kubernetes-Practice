@@ -261,3 +261,51 @@ Reference: [Kubernetes Services Documentation](https://kubernetes.io/docs/concep
 | Liveness Probe  | Is the app alive?           | Restart the container               | App crash, hang, or deadlock        |
 | Readiness Probe | Is the app ready to serve?  | Remove pod from Service endpoint    | App warming up, waiting for resources |
 | Startup Probe   | Has the app started yet?    | Kill pod if it doesn't start in time | Slow-starting apps                  |
+
+---
+
+#### Q: What is the function of maxUnavailable and maxSurge in rolling update deployment stratergy ?
+
+**Solution**:
+
+✅ maxUnavailable
+
+  - The maximum number of Pods that can be unavailable during the update.
+  - Expressed as an absolute number or percentage of desired Pods.
+  - Ensures that a certain number of replicas are always available.
+
+✅ maxSurge
+
+  - The maximum number of extra Pods that can be created above the desired number of Pods during the update.
+  - Also expressed as an absolute number or percentage.
+  - Allows faster rollout by temporarily exceeding the desired replica count.
+
+
+📊 Example
+Let's say your Deployment has replicas: 4.
+
+### 📄 YAML Example
+```yaml
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 1
+        maxSurge: 2
+```
+- What happens during the update:
+   - Kubernetes may bring up to 2 extra Pods temporarily (6 total Pods max).
+   - At most 1 Pod can be unavailable at any given time.
+   - This speeds up the rollout while maintaining high availability.
+
+📌 Summary Table
+
+| Setting          | Meaning                                               | Default |
+| ---------------- | ----------------------------------------------------- | ------- |
+| `maxUnavailable` | Max number of Pods that can be **down** during update | `1`     |
+| `maxSurge`       | Max number of **extra Pods** created during update    | `1`     |
+
+Both can be set as:
+  - A number (e.g., 1)
+  - A percentage string (e.g., "25%")
+
+---
