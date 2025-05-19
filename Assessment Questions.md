@@ -237,3 +237,27 @@ Reference: [Kubernetes Services Documentation](https://kubernetes.io/docs/concep
 - Instead of manually inspecting each individual component (e.g., ArgoCD, Helm, Prometheus), you can run automated tests to verify the core functionality of the cluster and the critical services it hosts. This ensures the Kubernetes upgrade doesn’t break essential workloads or services.
 
 ---
+
+#### Q: What are different types of probes in Kubernetes ?
+
+**Solution**:
+
+1. Liveness Probe : 
+  - Checks if the application is still running.If the liveness probe fails, Kubernetes will restart the container.
+  - Use Case: If your application hangs or gets stuck (e.g., deadlock), the liveness probe detects it and triggers a restart.
+
+2. Readiness Probe:
+  - Checks if the application is ready to serve traffic.If it fails, the Pod is removed from the Service endpoints, but it’s not restarted.
+  - Use Case: An app takes time to initialize or becomes temporarily unable to serve (e.g., waiting for DB connection).
+
+3. Startup Probe:
+  - Used when an application takes a long time to start. It gives the app more time before Kubernetes starts liveness checks.
+  - Use Case: For legacy apps or apps with long initialization routines
+  - How it works:
+      - If a startup probe is defined, liveness and readiness probes are disabled until the startup probe succeeds.After success, Kubernetes starts running the other probes.
+
+| **Probe Type**    | **What it Checks**           | **Failure Action**                   | **Use Case**                         |
+|------------------|----------------------------|--------------------------------------|--------------------------------------|
+| Liveness Probe  | Is the app alive?           | Restart the container               | App crash, hang, or deadlock        |
+| Readiness Probe | Is the app ready to serve?  | Remove pod from Service endpoint    | App warming up, waiting for resources |
+| Startup Probe   | Has the app started yet?    | Kill pod if it doesn't start in time | Slow-starting apps                  |
