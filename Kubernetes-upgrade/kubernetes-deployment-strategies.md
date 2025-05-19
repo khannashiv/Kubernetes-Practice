@@ -3,6 +3,7 @@
 
 This document details various deployment strategies available in Kubernetes, including how they work, when to use them, pros and cons, and YAML configuration examples.
 
+ - Ref : https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 ---
 
 ## 1. Rolling Update Strategy (Default)
@@ -202,3 +203,21 @@ Remove routing rule for version B or revert headers.
 | Blue/Green       | No       | Manual switch     | Easy             | Medium     | Test before release, fast rollback |
 | Canary           | No       | Gradual rollout   | Easy (early)     | Medium     | Risk-controlled deployment        |
 | A/B Testing      | No       | Custom/user-based | Medium           | High       | Targeted experiments              |
+
+## Summary on deployment stratergies for k8s .
+
+Generally all three deployment strategies—Blue-Green Deployment, Canary Deployment, and Rolling Update—can be carried out on the same Kubernetes cluster, but they differ in their approach:
+
+- Blue-Green Deployment
+  - Involves two separate environments (Blue and Green) within the same cluster.
+  - The Blue environment runs the current stable version, while the Green environment hosts the new version.
+  - Traffic is switched from Blue to Green once validation is complete.
+- Canary Deployment
+  - A gradual rollout strategy where a small percentage of traffic is directed to the new version while the majority still hits the old version.
+  - This allows monitoring of the new version before full deployment.
+- Rolling Update
+  - Updates pods incrementally within the same cluster, ensuring zero downtime.
+  - Kubernetes replaces old pods with new ones one at a time, maintaining availability.
+  Each strategy has its advantages depending on risk tolerance, rollback needs, and traffic control.
+
+  ---
