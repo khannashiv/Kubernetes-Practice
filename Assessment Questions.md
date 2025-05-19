@@ -227,9 +227,13 @@ Reference: [Kubernetes Services Documentation](https://kubernetes.io/docs/concep
 
 - At the end of the day, these are Kubernetes controllers running in your cluster. To ensure they continue functioning correctly after the upgrade, it's crucial to thoroughly test these components in a lower environment (e.g., dev, UAT, staging) before applying the upgrade in production. This allows you to identify any compatibility issues or misconfigurations with the upgraded Kubernetes version. Additionally, ensure the versions of the controllers (ArgoCD, Helm, Prometheus) you’re using are compatible with the new Kubernetes version you are upgrading to.
 
+---
+
 #### Q: How do you test whether the upgrade works or not?
 
 **Solution**:
 
 - To validate that the upgrade works successfully, it is essential to automate the testing process. The QE (Quality Engineering) or DevOps teams typically create regression, functional, and end-to-end (E2E) tests. These tests should be executed on the upgraded Kubernetes nodes to confirm that the upgrade is successful.
 - Instead of manually inspecting each individual component (e.g., ArgoCD, Helm, Prometheus), you can run automated tests to verify the core functionality of the cluster and the critical services it hosts. This ensures the Kubernetes upgrade doesn’t break essential workloads or services.
+
+---
