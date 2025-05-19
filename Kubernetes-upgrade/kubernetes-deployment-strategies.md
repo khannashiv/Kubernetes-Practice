@@ -197,8 +197,7 @@ Remove routing rule for version B or revert headers.
 ## ✅ Strategy Comparison Table
 
 | Strategy         | Downtime | Traffic Control   | Rollback        | Complexity | Best For                          |
-|------------------|----------|-------------------|------------------|------------|-----------------------------------|
-| Recreate         | Yes      | None              | Easy             | Low        | Quick, simple updates             |
+|------------------|----------|-------------------|------------------|------------|-----------------------------------
 | Rolling Update   | No       | Automatic         | Medium           | Low        | General usage                     |
 | Blue/Green       | No       | Manual switch     | Easy             | Medium     | Test before release, fast rollback |
 | Canary           | No       | Gradual rollout   | Easy (early)     | Medium     | Risk-controlled deployment        |
