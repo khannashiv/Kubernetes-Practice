@@ -102,3 +102,9 @@ After upgrading the **control plane** and **data plane**:
 - ✔ Perform **smoke tests** to verify app functionality
 
 ---
+
+More Refrences : 
+
+- https://www.golinuxcloud.com/kubernetes-upgrade-version/
+- https://kubernetes.io/docs/tasks/administer-cluster/cluster-upgrade/
+- https://gist.github.com/iam-veeramalla/7e32999189f4aa9064334d1d27bd877c
