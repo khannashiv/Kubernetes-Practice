@@ -54,3 +54,16 @@ $ kubectl delete all -l app=my-app
 
 #### Source git repository for refrence w.r.t k8s-deployment-stratergies
   - https://github.com/ContainerSolutions/k8s-deployment-strategies/tree/master
+
+**Outcomes of Canary-deployment**
+
+- ![Canary-1](../../../../images/Canary-1.png)
+- ![Canary-2](../../../../images/Canary-2.png)
+- ![Canary-3](../../../../images/Canary-3.png)
+- ![Canary-4](../../../../images/Canary-4.png)
+- ![Canary-5](../../../../images/Canary-5.png)
+- ![Canary-6](../../../../images/Canary-6.png)
+- ![Canary-7](../../../../images/Canary-7.png)
+- ![Canary-8](../../../../images/Canary-8.png)
+- ![Canary-9](../../../../images/Canary-9.png)
+- ![Canary-10](../../../../images/Canary-10.png)           
