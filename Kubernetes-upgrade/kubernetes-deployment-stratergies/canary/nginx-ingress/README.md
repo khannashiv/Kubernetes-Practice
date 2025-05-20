@@ -19,19 +19,9 @@ controller](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configur
 ## In practice
 
 ```bash
-# Deploy the ingress-nginx controller
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.22.0/deploy/mandatory.yaml
-
-# Expose the ingress-nginx
-$ kubectl expose deployment \
-    -n ingress-nginx nginx-ingress-controller \
-    --port 80 \
-    --type LoadBalancer \
-    --name ingress-nginx
-
-# Wait for nginx to be running
-$ kubectl rollout status deploy nginx-ingress-controller -n ingress-nginx -w
-deployment "nginx-ingress-controller" successfully rolled out
+# Deploy the ingress-nginx controller for minikube
+# Ref Docs : https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+$ minikube addons enable ingress
 
 # Deploy version 1 and expose the service via an ingress
 $ kubectl apply -f ./app-v1.yaml -f ./ingress-v1.yaml
@@ -40,8 +30,9 @@ $ kubectl apply -f ./app-v1.yaml -f ./ingress-v1.yaml
 $ kubectl apply -f ./app-v2.yaml
 
 # In a different terminal you can check that requests are responding with version 1
-$ nginx_service=$(minikube service ingress-nginx -n ingress-nginx --url)
-$ while sleep 0.1; do curl "$nginx_service" -H "Host: my-app.com"; done
+# NOTE:In the below command url i.e. http://192.168.49.2:31690 points to ingress-nginx-controller service which get deployed under ingress-nginx namespace.
+# Run command i.e. minikube service list to get url information after deplying nginx ingress controller.
+$  while sleep 0.1; do curl "http://192.168.49.2:31690" -H "Host: my-app.com"; done
 
 # Create a canary ingress in order to split traffic: 90% to v1, 10% to v2
 $ kubectl apply -f ./ingress-v2-canary.yaml
@@ -60,3 +51,6 @@ $ kubectl apply -f ./ingress-v2.yaml
 ```bash
 $ kubectl delete all -l app=my-app
 ```
+
+#### Source git repository for refrence w.r.t k8s-deployment-stratergies
+  - https://github.com/ContainerSolutions/k8s-deployment-strategies/tree/master
