@@ -57,7 +57,7 @@ $ kubectl delete all -l app=my-app
 
 **Outcomes of Canary-deployment**
 
-- ![Canary-1](../../../../images/Canary-1.png)
+- ![Canary-1](../../../images/Canary-1.png)
 - ![Canary-2](../../../../images/Canary-2.png)
 - ![Canary-3](../../../../images/Canary-3.png)
 - ![Canary-4](../../../../images/Canary-4.png)
