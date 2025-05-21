@@ -3,14 +3,12 @@ kind: Service
 metadata:
   name: my-app-a-v1
   labels:
-    app: my-app
+    app: my-app-a # Changed to match pod labels
 spec:
   ports:
   - name: http
     port: 80
     targetPort: http
-
-  # Note here that we match both the app and the version
   selector:
     app: my-app-a
     version: v1.0.0
@@ -20,7 +18,7 @@ kind: Deployment
 metadata:
   name: my-app-a-v1
   labels:
-    app: my-app
+    app: my-app-a # Changed to match pod labels
 spec:
   replicas: 2
   selector:

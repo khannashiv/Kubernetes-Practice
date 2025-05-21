@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: my-app-b-v1
   labels:
-    app: my-app
+    app: my-app-b
 spec:
   ports:
   - name: http
@@ -20,7 +20,7 @@ kind: Deployment
 metadata:
   name: my-app-b-v1
   labels:
-    app: my-app
+    app: my-app-b
 spec:
   replicas: 2
   selector:
