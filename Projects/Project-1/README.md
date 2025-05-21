@@ -57,3 +57,4 @@
 - ![EKS-ingress-34](../../images/EKS-ingress-34.PNG)
 - ![EKS-ingress-35](../../images/EKS-ingress-35.PNG)
 - ![EKS-ingress-36](../../images/EKS-ingress-36.PNG)
+- ![EKS-ingress-37](../../images/EKS-ingress-37.PNG)
