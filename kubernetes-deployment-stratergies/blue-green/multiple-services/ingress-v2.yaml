@@ -4,9 +4,8 @@ metadata:
   name: my-app
   labels:
     app: my-app
-  annotations:
-    kubernetes.io/ingress.class: nginx
 spec:
+  ingressClassName: nginx
   rules:
   - host: a.domain.com
     http:
