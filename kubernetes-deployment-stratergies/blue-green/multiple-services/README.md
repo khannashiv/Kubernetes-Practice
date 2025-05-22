@@ -76,17 +76,17 @@ $ kubectl delete all -l app=my-app
 
 **Outcomes of Blue-Green-deployment**
 
-- ![Blue-green-1](../../../../images/Blue-green-1.png)
-- ![Blue-green-2](../../../images/Blue-green-2.png)
-- ![Blue-green-3](../../../images/Blue-green-3.png)
-- ![Blue-green-4](../../../images/Blue-green-4.png)
-- ![Blue-green-5](../../../images/Blue-green-5.png)
-- ![Blue-green-6](../../../images/Blue-green-6.png)
-- ![Blue-green-7](../../../images/Blue-green-7.png)
-- ![Blue-green-8](../../../images/Blue-green-8.png)
-- ![Blue-green-9](../../../images/Blue-green-9.png)
-- ![Blue-green-10](../../../images/Blue-green-10.png)
-- ![Blue-green-11](../../../images/Blue-green-11.png)
-- ![Blue-green-12](../../../images/Blue-green-12.png)
+- ![Blue-green-1](../../../images/Blue-green-1.PNG)
+- ![Blue-green-2](../../../images/Blue-green-2.PNG)
+- ![Blue-green-3](../../../images/Blue-green-3.PNG)
+- ![Blue-green-4](../../../images/Blue-green-4.PNG)
+- ![Blue-green-5](../../../images/Blue-green-5.PNG)
+- ![Blue-green-6](../../../images/Blue-green-6.PNG)
+- ![Blue-green-7](../../../images/Blue-green-7.PNG)
+- ![Blue-green-8](../../../images/Blue-green-8.PNG)
+- ![Blue-green-9](../../../images/Blue-green-9.PNG)
+- ![Blue-green-10](../../../images/Blue-green-10.PNG)
+- ![Blue-green-11](../../../images/Blue-green-11.PNG)
+- ![Blue-green-12](../../../images/Blue-green-12.PNG)
 
 ---
