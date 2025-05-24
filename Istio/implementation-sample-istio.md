@@ -1,7 +1,10 @@
 ## Implementation of istio as a service mesh by sample application.
 
 **Outcomes of implementation**
-- Ref : https://istio.io/latest/docs/setup/getting-started/
+- Refrences :
+ - https://istio.io/latest/docs/setup/getting-started/
+ - https://istio.io/latest/docs/examples/bookinfo/
+ 
 - ![Istio-1](../images/Istio-1.PNG)
 - ![Istio-2](../images/Istio-2.PNG)
 - ![Istio-3](../images/Istio-3.PNG)
