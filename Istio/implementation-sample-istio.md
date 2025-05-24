@@ -2,9 +2,8 @@
 
 **Outcomes of implementation**
 - Refrences :
- - https://istio.io/latest/docs/setup/getting-started/
- - https://istio.io/latest/docs/examples/bookinfo/
- 
+    - https://istio.io/latest/docs/setup/getting-started/
+    - https://istio.io/latest/docs/examples/bookinfo/
 - ![Istio-1](../images/Istio-1.PNG)
 - ![Istio-2](../images/Istio-2.PNG)
 - ![Istio-3](../images/Istio-3.PNG)
