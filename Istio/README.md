@@ -13,7 +13,8 @@
 **Practice**
   - https://github.com/iam-veeramalla/istio-guide
   ---
-**Some commands used during hands-on**
+
+## Some commands used during hands-on 
 
 | **Resource Type**                  | **Action** | **Command**                                                          |
 | ---------------------------------- | ---------- | -------------------------------------------------------------------- |
@@ -34,4 +35,3 @@
 |                                    | Describe   | `kubectl describe destinationrule <name>`                            |
 |                                    | Delete     | `kubectl delete destinationrule <name>`                              |
 
---- 
