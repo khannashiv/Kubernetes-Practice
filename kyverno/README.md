@@ -7,7 +7,7 @@
 - https://kyverno.io/policies/
 - https://kyverno.io/docs/exceptions/
 
-**Git repo for Kyverno for doing hands-on**
+**GitHub repository for Kyverno to do hands-on practice.**
 - https://github.com/kyverno/policies/blob/main/best-practices/
 - https://github.com/iam-veeramalla/k8s-kyverno-argocd/tree/main
 
