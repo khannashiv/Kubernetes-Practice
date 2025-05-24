@@ -1,6 +1,5 @@
 ## Istio as service mesh.
 
----
 **Refrence docs for deploying istio as service mesh**
   - https://istio.io/latest/docs/setup/getting-started/
   - https://istio.io/latest/docs/setup/install/istioctl/
@@ -12,11 +11,8 @@
   - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/
   
 **Practice**
-    - https://github.com/iam-veeramalla/istio-guide
+  - https://github.com/iam-veeramalla/istio-guide
   ---
-
----
-
 **Some commands used during hands-on**
 
 | **Resource Type**                  | **Action** | **Command**                                                          |
