@@ -97,7 +97,8 @@ helm template payments-service myrepo/payments --debug
 ```
 
 **Results of the Hands-on Practice**
-    ---
+---
+
 - ![Helm-1](../images/Helm-1.PNG)
 - ![Helm-2](../images/Helm-2.PNG)
 - ![Helm-3](../images/Helm-3.PNG)
@@ -106,4 +107,5 @@ helm template payments-service myrepo/payments --debug
 - ![Helm-6](../images/Helm-6.PNG)
 - ![Helm-7](../images/Helm-7.PNG)
 - ![Helm-8](../images/Helm-8.PNG)
-    ---
+
+---
