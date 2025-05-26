@@ -63,7 +63,8 @@ Below is a shell script that performs Helm repository setup, packaging, pushing 
 
 ```bash
 # payments-service & shipping-service are release names.
-# myrepo/payments & myrepo/shipping are helm charts
+# myrepo/payments & myrepo/shipping are helm charts.
+# myrepo is name of the helm repo that we have created.
 
 # Add Helm repo
 helm repo add myrepo https://khannashiv.github.io/Helm-Practice
