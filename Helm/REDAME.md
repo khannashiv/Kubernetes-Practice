@@ -62,12 +62,14 @@
 Below is a shell script that performs Helm repository setup, packaging, pushing to GitHub Pages, and installing services .
 
 ```bash
+# payments-service & shipping-service are release names.
+# myrepo/payments & myrepo/shipping are helm charts
 
 # Add Helm repo
 helm repo add myrepo https://khannashiv.github.io/Helm-Practice
 helm repo update
 
-# Clean up old files before doi
+# Clean up old files before doing re-packging
 rm -rf shipping-1.1.0.tgz index.yaml
 
 # Package Helm charts
