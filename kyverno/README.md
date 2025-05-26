@@ -24,5 +24,12 @@
 - ![Kyverno-8](../images/Kyverno-8.PNG)
 - ![Kyverno-9](../images/Kyverno-9.PNG)
 - ![Kyverno-10](../images/Kyverno-10.PNG)
+- ![Kyverno-11](../images/Kyverno-11.PNG)
+- ![Kyverno-12](../images/Kyverno-12.PNG)
+- ![Kyverno-13](../images/Kyverno-13.PNG)
+- ![Kyverno-14](../images/Kyverno-14.PNG)
+- ![Kyverno-15](../images/Kyverno-15.PNG)
+- ![Kyverno-16](../images/Kyverno-16.PNG)
+- ![Kyverno-17](../images/Kyverno-17.PNG)
 
 ---
