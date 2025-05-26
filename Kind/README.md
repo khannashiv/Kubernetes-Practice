@@ -13,13 +13,10 @@
 - https://www.hackingnote.com/en/cheatsheets/kind/
 - https://gist.github.com/githubfoam/f8e60a283e308063738980cbc3c009ee
 
-## Frequent KIND & kubectl Commands used in Handson
+## Common KIND & kubectl Commands for Hands-on Practice
 
 ```bash
-##############################
-#    KIND Frequent Commands  #
-##############################
-
+#### KIND Frequent Commands ####
 # 1. Create a KIND cluster
 kind create cluster --name my-cluster
 
@@ -50,4 +47,4 @@ kubectl config use-context <name-of-kubernetes-cluster>
 # 10. View kubeconfig entries filtered by cluster name
 kubectl config view | grep <name-of-cluster>
 
-##############################
+--- 
