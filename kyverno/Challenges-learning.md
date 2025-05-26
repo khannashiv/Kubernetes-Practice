@@ -90,3 +90,48 @@ data:
 | `webhooks.namespaceSelector` | Skips running webhooks in the `kyverno` namespace          |
 
 ---
+
+Q: Failed to load live state: Cluster level ClusterPolicy "require-requests-limits" can not be managed when in namespaced mode ?
+
+Sol : 
+
+In order to fix above we tried to add exclusions under config map  i.e.
+
+resource.exclusions: |
+    - apiGroups:
+        - kyverno.io
+      kinds:
+        - ClusterPolicy
+      clusters:
+        - '*'
+
+Apply the edit using : kubectl edit configmap argocd-cm -n default
+Restart Argo CD components (mainly the server) to pick up changes : kubectl rollout restart deployment example-argocd-server -n default
+It looks like changes i.e. (resource.exclusions) were not getting saved after rollout of argocd server.
+So we have done patching of ArgoCD cr / custom-resource using the following command i.e.
+
+kubectl patch argocd example-argocd \
+  -n default \
+  --type merge \
+  -p '{
+    "spec": {
+      "extraConfig": {
+        "resource.exclusions": "- apiGroups:\n  - kyverno.io\n  kinds:\n  - ClusterPolicy\n  clusters:\n  - \"*\""
+      }
+    }
+  }'
+
+To confirm the name of custom resource / cr in argocd we have used following command i.e.
+
+ubuntu@ubuntu-virtual-machine:~$ kubectl get argocd -A
+NAMESPACE   NAME             AGE
+default     example-argocd   97m
+
+
+
+Now that the config is part of the cr sinc we have done in the last step no we are going to restart the Argo CD server using the command i.e. kubectl rollout restart deployment example-argocd-server -n default
+
+After restart, check that the exclusion is reflected : kubectl get configmap argocd-cm -n default -o yaml | grep -A 5 "resource.exclusions"
+
+kubectl get configmap argocd-cm -n default -o yaml -- >  Fetches the argocd-cm ConfigMap in YAML format from the default namespace.
+grep -A 5 "resource.exclusions" --- > Searches for the line containing the string "resource.exclusions" and also prints 5 lines after it.
