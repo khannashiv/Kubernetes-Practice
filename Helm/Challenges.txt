@@ -1,0 +1,68 @@
+Challenges && Fixes
+
+
+Error: INSTALLATION FAILED: template: shipping/templates/tests/test-connection.yaml:14:60: executing "shipping/templates/tests/test-connection.yaml" at <.Values.service.port>: nil pointer evaluating interface {}.port
+
+Sol :
+
+Update :  shipping/values.yaml file with following code .
+
+service:
+  port: 80
+
+
+Error: INSTALLATION FAILED: template: shipping/templates/serviceaccount.yaml:1:14: executing "shipping/templates/serviceaccount.yaml" at <.Values.serviceAccount.create>: nil pointer evaluating interface {}.create
+
+
+Sol : To fix this, make sure your shipping/values.yaml file includes the following block:
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+  automount: true
+
+
+Error: INSTALLATION FAILED: template: shipping/templates/ingress.yaml:1:14: executing "shipping/templates/ingress.yaml" at <.Values.ingress.enabled>: nil pointer evaluating interface {}.enabled
+
+Sol :
+
+Add the missing ingress configuration block to your shipping/values.yaml file.
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+
+Error : INSTALLATION FAILED: template: shipping/templates/hpa.yaml:1:14: executing "shipping/templates/hpa.yaml" at <.Values.autoscaling.enabled>: nil pointer evaluating interface {}.enabled
+
+Sol :  It means your chart is referencing .Values.autoscaling.enabled, but autoscaling is not defined in values.yaml. So it's again trying to access .enabled on a nil object.
+
+Fix: Define autoscaling in shipping/values.yaml
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+
+
+Error: INSTALLATION FAILED: template: shipping/templates/NOTES.txt:8:39: executing "shipping/templates/NOTES.txt" at <.Values.service.type>: wrong type for value; expected string; got interface {}
+
+
+Sol : It means that your Helm chart expects .Values.service.type to be a string, but it's currently undefined or incorrectly set (it's being treated as a generic object, interface{}).
+
+In your shipping/values.yaml, make sure the service block is defined like this:
+
+service:
+  type: ClusterIP   # or LoadBalancer, NodePort, etc.
+  port: 80
+
+
