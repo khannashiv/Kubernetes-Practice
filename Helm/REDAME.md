@@ -59,7 +59,7 @@
 
 ## 🚀 Helm Hands-on Script
 
-Below is a shell script that performs Helm repository setup, packaging, pushing to GitHub Pages, and installing services:
+Below is a shell script that performs Helm repository setup, packaging, pushing to GitHub Pages, and installing services .
 
 ```bash
 
