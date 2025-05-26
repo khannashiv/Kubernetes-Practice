@@ -9,7 +9,7 @@
 **Installation & Setup of KIND cluster**
 - https://kind.sigs.k8s.io/docs/user/quick-start/#installing-from-source
 
-**KIND Cheatsheet**
+**KIND cheatsheet for refrence**
 - https://www.hackingnote.com/en/cheatsheets/kind/
 - https://gist.github.com/githubfoam/f8e60a283e308063738980cbc3c009ee
 
