@@ -46,5 +46,4 @@ kubectl config use-context <name-of-kubernetes-cluster>
 
 # 10. View kubeconfig entries filtered by cluster name
 kubectl config view | grep <name-of-cluster>
-
---- 
+```
